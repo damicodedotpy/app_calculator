@@ -1,0 +1,148 @@
+{% from "./macros/macros.html" import historic_calcs %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- INICIO: STYLESHEETS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/style.css') }}">
+    <link href="">
+    <!-- FIN: STYLESHEETS -->
+
+    <title>Calculator</title>
+</head>
+<body>
+    <main class="content">
+        <div class="title__container">
+            <h1 class="title">The calculadora</h1>
+        </div>
+
+        <div class="tools__container">
+            <!-- INICIO: TRADUCTOR -->
+            <div class="translator__container">
+                <div class="text_box">
+                    <div class="text_box__title">English Writting</div>
+                    <div class="text_box__traduction"> {{english_number}} </div>
+                </div>
+
+                <div class="text_box">
+                    <div class="text_box__title">Escritura en Español</div>
+                    <div class="text_box__traduction">{{spanish_number}}</div>
+                </div>
+            </div>
+            <!-- FIN: TRADUCTOR -->
+
+
+            <!-- INICIO: CALCULADORA -->
+            <div class="calculator__container">
+                <div class="result__container">
+                    <p>{{ screen_result }}</p>
+                </div>
+    
+                <div class="numbers__container">
+                    <!-- <div> -->
+                        <div class="keyboard__option">
+                            <a class="button__operator" href="{{ url_for('calculator.calculate', operator='reset') }}">C</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__operator" href="{{ url_for('calculator.calculate', operator='braces') }}">()</a>
+                        </div>
+                        
+                        <div class="keyboard__option">
+                            <a class="button__operator" href="{{ url_for('calculator.calculate', operator='percentage') }}">%</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__operator" href="{{ url_for('calculator.calculate', operator='divide') }}">/</a>
+                        </div>
+                    <!-- </div> -->
+    
+                    <!-- <div> -->
+                        <div class="keyboard__option">
+                            <a class="button__number" href="{{ url_for('calculator.calculate', number='7') }}">7</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__number" href="{{ url_for('calculator.calculate', number='8') }}">8</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__number" href="{{ url_for('calculator.calculate', number='9') }}">9</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__operator" href="{{ url_for('calculator.calculate', operator='plus') }}">x</a>
+                        </div>
+                    <!-- </div> -->
+                    
+                    <!-- <div> -->
+                        <div class="keyboard__option">
+                            <a class="button__number" href="{{ url_for('calculator.calculate', number='4') }}">4</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__number" href="{{ url_for('calculator.calculate', number='5') }}">5</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__number" href="{{ url_for('calculator.calculate', number='6') }}">6</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__operator" href="{{ url_for('calculator.calculate', operator='substract') }}">-</a>
+                        </div>
+                    <!-- </div> -->
+    
+                    <!-- <div> -->
+                        <div class="keyboard__option">
+                            <a class="button__number" href="{{ url_for('calculator.calculate', number='1') }}">1</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__number" href="{{ url_for('calculator.calculate', number='2') }}">2</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__number" href="{{ url_for('calculator.calculate', number='3') }}">3</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__operator" href="{{ url_for('calculator.calculate', operator='add') }}">+</a>
+                        </div>
+                    <!-- </div> -->
+    
+                    <!-- <div> -->
+                        <div class="keyboard__option">
+                            <a class="button__operator" href="{{ url_for('calculator.calculate', operator='comma') }}">,</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__number" href="{{ url_for('calculator.calculate', number='0') }}">0</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__operator" href="{{ url_for('calculator.calculate', operator='dot') }}">.</a>
+                        </div>
+    
+                        <div class="keyboard__option">
+                            <a class="button__operator" href="{{ url_for('calculator.calculate', operator='equal') }}">=</a>
+                        </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <!-- FIN: CALCULADORA -->
+
+            <!-- INICIO: HISTORIAL -->
+            <div class="history__container">
+                {% for record in historial %}
+                    {{ historic_calcs(record) }}
+                {% endfor %}
+            </div>
+            <!-- FIN: HISTORIAL -->
+    </main>
+</body>
+</html>

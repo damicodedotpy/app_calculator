@@ -1,0 +1,217 @@
+:root {
+    --frame-glow: 0 0 15px 5px #8be048;
+    --frame-border: 1px solid #4c7b28;
+    --background-page: #000;
+    --calculator-result-font-size: 4rem;
+    --calculator-keyboard-font-size: 3rem;
+    --calculator-keyboard-font-color: #ffffff;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+@font-face {
+    font-family: "Pixel";
+    src: url(../Minecraft.ttf);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    font-family: "Pixel";
+    color: #ffffff;
+    background-color: #115621;
+    background-image: linear-gradient(43deg, #115621 2%, #204c16 27%, #000000 71%);
+    
+}
+
+a {
+    text-decoration: none;
+    color: var(--calculator-keyboard-font-color);
+
+}
+
+/* INICIO: TOOLS */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.tools__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 6rem;
+}
+/* FIN: TOOLS */
+
+
+
+/* INICIO: APP TITLE */
+.title__container {
+    /* border: 1px solid #ffffff; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+    height: 60px;
+    padding: 0rem 2rem;
+    box-shadow: var(--frame-glow);
+    border-radius: 1rem;
+    letter-spacing: .5rem;
+}
+/* FIN: APP TITLE */
+
+
+
+/* INICIO: TRADUCTOR */
+.translator__container {
+    /* border: 1px solid #ffffff; */
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 500px;
+    gap: 60px;
+}
+
+.text_box {
+    box-shadow: var(--frame-glow);
+    display: flex;
+    flex-direction: column;
+    height: 220px;
+    font-size: 1rem;
+}
+
+.text_box__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border: var(--frame-border);
+    height: 4rem;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.text_box__traduction {
+    border: var(--frame-border);
+    margin: 1rem;
+    height: 100%;
+    font-size: 2rem;
+    padding: 1rem;
+    text-transform: capitalize;
+    overflow: auto;
+}
+/* FIN: TRADUCTOR */
+
+
+
+/* INICIO: CALCULADORA */
+.calculator__container {
+    box-shadow: var(--frame-glow);
+    border: var(--frame-border);
+    /* margin: auto 0; */
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.result__container {
+    margin: 1rem;
+    border: 1px solid #8be048;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: auto;
+    height: 80px;
+    font-size: var(--calculator-result-font-size);
+}
+
+.result__container p {
+    overflow-x: auto;
+}
+
+.numbers__container {
+    font-size: var(--calculator-keyboard-font-size);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    height: 100%;
+}
+
+.keyboard__option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #8be048;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+}
+
+.keyboard__option:hover {
+    box-shadow: var(--frame-glow);
+}
+
+.keyboard__option:active {
+    background-color: #ffffff;
+    border-radius: 25%;
+}
+/* FIN: CALCULADORA */
+
+
+
+/* INICIO: HISTORIAL */
+.history__container {
+    box-shadow: var(--frame-glow);
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 500px;
+    overflow: auto;
+}
+
+.historic_register {
+    border: var(--frame-border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+    height: 50px;
+}
+
+.historic_square {
+    border: var(--frame-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    margin: .5rem;
+    overflow-x: auto;
+}
+/* FIN: HISTORIAL */
+
+
+
+
+
+
+
+
+
+
+
+
+
