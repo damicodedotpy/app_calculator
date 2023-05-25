@@ -22,7 +22,7 @@ english_number = ""
 def calculate():
     # I made the temporal variables 'goblal'
     # in order to access to them from the 
-    # the method and be able to modify them.
+    # method and be able to modify them.
     global num_list, operator, string_number, screen_result, spanish_number, english_number, historial
     
     # Aritmetic operator receiver and coversor
@@ -49,7 +49,7 @@ def calculate():
             screen_result = ""
             
         # For the case the user wants to calculate
-        #something and there is formula typed
+        # something and there is formula typed
         elif entered_operator["name"] == "equal":
             
             # The formula is resolved and delivered
@@ -62,17 +62,26 @@ def calculate():
                 spanish_number = numToWords(string_number, "es")
                 english_number = numToWords(string_number, "en")
                 historial.append((equation, calc))
+                
             # For the case the formula is a zero
             # dividing zero operation
             except ZeroDivisionError:
                 screen_result = "\ (T o T) / Boom!"
+                
             # For the case the formula do not 
             # represents a valid aritmetic operation
             # or number, for example '8.1.1'
             except SyntaxError:
                 screen_result = "X_x Bad syntax!"
+                
+            # For the case the formula has invalid
+            # characters
             except TypeError:
                 screen_result = "o_- WTF was that!"
+                
+            # For the case the translation process
+            # of number to text fails due to the 
+            # size
             except OverflowError:
                 english_number = "\ (T o T) / \t HOLLY SH@#$ are you kiddin' me? I can not eve read it!!"
                 spanish_number = "\ (T o T) / \t OSTIAAAS!! Nisiquiera lo puedo leer"
@@ -105,4 +114,10 @@ def calculate():
         string_number += entered_number
         screen_result = string_number
         
-    return render_template("calculator.html", screen_result=screen_result, spanish_number=spanish_number, english_number=english_number, historial=historial)
+    # Render information processed to the 
+    # 'calculator.html' template
+    return render_template("calculator.html", 
+                            screen_result=screen_result, 
+                            spanish_number=spanish_number, 
+                            english_number=english_number, 
+                            historial=historial)
